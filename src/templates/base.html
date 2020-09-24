@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon"  href="/favicon.ico">
+    <meta charset="UTF-8">
+    <title>{% block title %}<!-- Placeholder for Title -->{% endblock %}</title>
+
+      {% block head %}
+      <!-- Placeholder for Other Imports -->
+      {% endblock %}
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('caesar')}}">Caesar Cipher</a></li>
+            <li><a href="{{url_for('vigenere')}}">Vigenere Cipher</a></li>
+        </ul>
+    </div>
+    <!--div id="header"> Simple Cipher Demos </div-->
+    <div id="content">
+        {% block content %}
+        <!-- Placeholder for Page Content -->
+        {% endblock %}
+    </div>
+</body>
+</html>

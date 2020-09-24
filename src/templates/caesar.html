@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Caesar Cipher
+{% endblock %}
+
+<!-- Replacement for Content -->
+{% block content %}
+<h1>Caesar Cipher (AKA Shift Cipher)</h1>
+<p>The Caesar cipher is one of the first known ciphers to be used and is elementary in nature.</p>
+<p>Also known as the shift cipher, this cipher is known as a substitution cipher, such that each letter in the plaintext message is shifted a consistent amount down the alphabet.</p>
+<p>For instance, the message "dog" with a shift of 1 would become "eph" as the letter 1 after 'd' is 'e', 1 after 'o' is 'p' and 1 after 'g' is 'h'</p>
+<p>Try the cipher out for yourself using the form below!</p>
+<form action="{{url_for('caesar')}}" method="POST">
+    Shift Amount:<br>
+    <input type="number" name="shift">
+    <br>
+    Message to Encipher:<br>
+    <input type="text" name="message">
+    <br><br>
+    <input type="submit" value="Encipher">
+</form>
+{% if encipher %}
+<h2>Your enciphered message: {{ encipher }}</h2>
+{% endif %}
+{% endblock %}
