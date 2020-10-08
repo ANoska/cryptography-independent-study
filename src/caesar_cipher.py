@@ -18,4 +18,5 @@ def caesar_encipher(shift, message):
         else:
             formatted_text += c.lower()
 
-    return str([chr(cipher_code.index(ord(c) - 97) + 97) for c in formatted_text])
+    cipher = ""
+    return cipher.join([chr(cipher_code.index(ord(c) - 97) + 97) for c in formatted_text])
