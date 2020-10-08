@@ -1,5 +1,6 @@
 import os
 import caesar_cipher
+import vigenere_cipher
 from flask import Flask, render_template, send_from_directory, request
 
 app = Flask(__name__)
@@ -24,9 +25,14 @@ def caesar():
         return render_template("caesar.html")
 
 
-@app.route("/vigenere")
+@app.route("/vigenere", methods=["GET", "POST"])
 def vigenere():
-    return render_template("vigenere.html")
+    if request.method == "POST":
+        return render_template("vigenere.html",
+                               encipher=vigenere_cipher.vigenere_encipher(request.form["key"], request.form["message"]))
+
+    else:
+        return render_template("vigenere.html")
 
 
 if __name__ == "__main__":

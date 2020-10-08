@@ -7,5 +7,17 @@ Vigenere Cipher
 <!-- Replacement for Content -->
 {% block content %}
 <h1>Vigenere Cipher</h1>
-<p>Vigenere cipher will go here</p>
+<p>Vigenere cipher description will go here</p>
+<form action="{{url_for('vigenere')}}" method="POST">
+    Key Word:<br>
+    <input type="text" name="key">
+    <br>
+    Message to Encipher:<br>
+    <input type="text" name="message">
+    <br><br>
+    <input type="submit" value="Encipher">
+</form>
+{% if encipher %}
+<h2>Your enciphered message: {{ encipher }}</h2>
+{% endif %}
 {% endblock %}
