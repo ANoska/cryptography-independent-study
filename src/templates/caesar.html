@@ -12,15 +12,27 @@ Caesar Cipher
 <p>For instance, the message "dog" with a shift of 1 would become "eph" as the letter 1 after 'd' is 'e', 1 after 'o' is 'p' and 1 after 'g' is 'h'</p>
 <p>Try the cipher out for yourself using the form below!</p>
 <form action="{{url_for('caesar')}}" method="POST">
+    Select Whether to Encipher or Decipher a Message:<br>
+    {% if request.form['cipher_option'] == 'decipher' %}
+        {% set encipherChecked = '' %}
+        {% set decipherChecked = 'checked' %}
+    {% else %}
+        {% set encipherChecked = 'checked' %}
+        {% set decipherChecked = '' %}
+    {% endif %}
+    <input type="radio" id="encipher" name="cipher_option" value="encipher" required {{ encipherChecked}}>
+    <label for="encipher">Encipher</label><br>
+    <input type="radio" id="decipher" name="cipher_option" value="decipher" required {{ decipherChecked }}>
+    <label for="decipher">Decipher</label><br>
     Shift Amount (Enter a number between 0 & 25):<br>
-    <input type="number" name="shift" min="0" max="25" required>
+    <input type="number" name="shift" min="0" max="25" value="{{ request.form['shift'] }}" required>
     <br>
-    Message to Encipher:<br>
-    <input type="text" name="message" required>
+    Text to Encipher:<br>
+    <input type="text" name="message" value="{{ request.form['message'] }}" required>
     <br><br>
-    <input type="submit" value="Encipher">
+    <input type="submit" value="Cipher">
 </form>
 {% if encipher %}
-<h2>Your enciphered message: <br />{{ encipher }}</h2>
+<h2>Your new message:<br />{{ encipher }}</h2>
 {% endif %}
 {% endblock %}

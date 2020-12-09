@@ -18,9 +18,12 @@ def favicon():
 
 @app.route("/caesar", methods=["GET", "POST"])
 def caesar():
-    if request.method == "POST":
+    if request.method == "POST" and request.form["cipher_option"] == "encipher":
         return render_template("caesar.html",
                                encipher=caesar_cipher.caesar_encipher(request.form["shift"], request.form["message"]))
+    elif request.method == "POST" and request.form["cipher_option"] == "decipher":
+        return render_template("caesar.html",
+                               encipher=caesar_cipher.caesar_decipher(request.form["shift"], request.form["message"]))
     else:
         return render_template("caesar.html")
 
