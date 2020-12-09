@@ -27,9 +27,12 @@ def caesar():
 
 @app.route("/vigenere", methods=["GET", "POST"])
 def vigenere():
-    if request.method == "POST":
+    if request.method == "POST" and request.form["cipher_option"] == "encipher":
         return render_template("vigenere.html",
                                encipher=vigenere_cipher.vigenere_encipher(request.form["key"], request.form["message"]))
+    elif request.method == "POST" and request.form["cipher_option"] == "decipher":
+        return render_template("vigenere.html",
+                               encipher=vigenere_cipher.vigenere_decipher(request.form["key"], request.form["message"]))
 
     else:
         return render_template("vigenere.html")

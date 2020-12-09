@@ -9,6 +9,11 @@ Vigenere Cipher
 <h1>Vigenere Cipher</h1>
 <p>Vigenere cipher description will go here</p>
 <form action="{{url_for('vigenere')}}" method="POST">
+    Select Whether to Encipher or Decipher a Message:<br>
+    <input type="radio" id="encipher" name="cipher_option" value="encipher">
+    <label for="encipher">Encipher</label><br>
+    <input type="radio" id="decipher" name="cipher_option" value="decipher">
+    <label for="decipher">Decipher</label><br>
     Key Word:<br>
     <input type="text" name="key">
     <br>
