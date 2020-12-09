@@ -13,7 +13,7 @@ def vigenere_encipher(key, message):
     cipher_text = ""
     incrementer = 0
     for c in message:
-        if incrementer > key_word_length or len(cipher_text) == 0:
+        if incrementer >= key_word_length or len(cipher_text) == 0:
             incrementer = 0
         else:
             incrementer += 1
@@ -30,7 +30,7 @@ def vigenere_decipher(key, cipher):
     plain_text = ""
     incrementer = 0
     for c in cipher:
-        if incrementer > key_word_length or len(plain_text) == 0:
+        if incrementer >= key_word_length or len(plain_text) == 0:
             incrementer = 0
         else:
             incrementer += 1

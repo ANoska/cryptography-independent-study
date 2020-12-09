@@ -10,19 +10,26 @@ Vigenere Cipher
 <p>Vigenere cipher description will go here</p>
 <form action="{{url_for('vigenere')}}" method="POST">
     Select Whether to Encipher or Decipher a Message:<br>
-    <input type="radio" id="encipher" name="cipher_option" value="encipher" required>
+    {% if request.form['cipher_option'] == 'decipher' %}
+        {% set encipherChecked = '' %}
+        {% set decipherChecked = 'checked' %}
+    {% else %}
+        {% set encipherChecked = 'checked' %}
+        {% set decipherChecked = '' %}
+    {% endif %}
+    <input type="radio" id="encipher" name="cipher_option" value="encipher" required  {{ encipherChecked }}>
     <label for="encipher">Encipher</label><br>
-    <input type="radio" id="decipher" name="cipher_option" value="decipher">
+    <input type="radio" id="decipher" name="cipher_option" value="decipher" required {{ decipherChecked }}>
     <label for="decipher">Decipher</label><br>
     Key Word (lower case letters only please!):<br>
-    <input type="text" name="key" pattern="[a-z]" required>
+    <input type="text" name="key" pattern="[a-z]*" value="{{ request.form['key'] }}" required>
     <br>
-    Message to Encipher:<br>
-    <input type="text" name="message" required>
+    Text to Encipher:<br>
+    <input type="text" name="message" value="{{ request.form['message'] }}" required>
     <br><br>
-    <input type="submit" value="Encipher">
+    <input type="submit" value="Cipher">
 </form>
 {% if encipher %}
-<h2>Your enciphered message: {{ encipher }}</h2>
+<h2>Your new message:<br />{{ encipher }}</h2>
 {% endif %}
 {% endblock %}
