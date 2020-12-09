@@ -12,15 +12,15 @@ Caesar Cipher
 <p>For instance, the message "dog" with a shift of 1 would become "eph" as the letter 1 after 'd' is 'e', 1 after 'o' is 'p' and 1 after 'g' is 'h'</p>
 <p>Try the cipher out for yourself using the form below!</p>
 <form action="{{url_for('caesar')}}" method="POST">
-    Shift Amount:<br>
-    <input type="number" name="shift">
+    Shift Amount (Enter a number between 0 & 25):<br>
+    <input type="number" name="shift" min="0" max="25" required>
     <br>
     Message to Encipher:<br>
-    <input type="text" name="message">
+    <input type="text" name="message" required>
     <br><br>
     <input type="submit" value="Encipher">
 </form>
 {% if encipher %}
-<h2>Your enciphered message: {{ encipher }}</h2>
+<h2>Your enciphered message: <br />{{ encipher }}</h2>
 {% endif %}
 {% endblock %}

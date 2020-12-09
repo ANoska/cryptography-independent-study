@@ -10,15 +10,15 @@ Vigenere Cipher
 <p>Vigenere cipher description will go here</p>
 <form action="{{url_for('vigenere')}}" method="POST">
     Select Whether to Encipher or Decipher a Message:<br>
-    <input type="radio" id="encipher" name="cipher_option" value="encipher">
+    <input type="radio" id="encipher" name="cipher_option" value="encipher" required>
     <label for="encipher">Encipher</label><br>
     <input type="radio" id="decipher" name="cipher_option" value="decipher">
     <label for="decipher">Decipher</label><br>
-    Key Word:<br>
-    <input type="text" name="key">
+    Key Word (lower case letters only please!):<br>
+    <input type="text" name="key" pattern="[a-z]" required>
     <br>
     Message to Encipher:<br>
-    <input type="text" name="message">
+    <input type="text" name="message" required>
     <br><br>
     <input type="submit" value="Encipher">
 </form>
