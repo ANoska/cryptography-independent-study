@@ -39,7 +39,6 @@ a:hover, a:active {
 div p {
 	border: 3px solid black;
 	background-color: #ccffff;
-	text-align: left;
 }
 
 div form {
