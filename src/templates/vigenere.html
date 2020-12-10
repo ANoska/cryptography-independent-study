@@ -6,29 +6,41 @@ Vigenere Cipher
 
 <!-- Replacement for Content -->
 {% block content %}
-<h1>Vigenere Cipher</h1>
-<p>Vigenere cipher description will go here</p>
-<form action="{{url_for('vigenere')}}" method="POST">
-    Select Whether to Encipher or Decipher a Message:<br>
-    {% if request.form['cipher_option'] == 'decipher' %}
-        {% set encipherChecked = '' %}
-        {% set decipherChecked = 'checked' %}
-    {% else %}
-        {% set encipherChecked = 'checked' %}
-        {% set decipherChecked = '' %}
-    {% endif %}
-    <input type="radio" id="encipher" name="cipher_option" value="encipher" required  {{ encipherChecked }}>
-    <label for="encipher">Encipher</label><br>
-    <input type="radio" id="decipher" name="cipher_option" value="decipher" required {{ decipherChecked }}>
-    <label for="decipher">Decipher</label><br>
-    Key Word (lower case letters only please!):<br>
-    <input type="text" name="key" pattern="[a-z]*" value="{{ request.form['key'] }}" required>
-    <br>
-    Text to Encipher:<br>
-    <input type="text" name="message" value="{{ request.form['message'] }}" required>
-    <br><br>
-    <input type="submit" value="Cipher">
-</form>
+<h1>Vigenère Cipher</h1>
+<div>
+    <p>
+        The Vigenère cipher is essentially a more advanced Caesar cipher as it applies several different shifts over the plain text to produce an enciphered message. The different shifts are calculated from a keyword, so there is still the consistency of a substitution cipher, however the period of consistency depends upon the length of the keyword
+        <br>
+        For example, the message "cat" with keyword "abc" would become "dcw" the shifts applied to cat being 123 (a = 1,b = 2,..)
+        <br>
+        c + 1 = d; a + 2 = c; t + 3 = w
+    </p>
+</div>
+<div>
+    <form action="{{url_for('vigenere')}}" method="POST">
+        Select Whether to Encipher or Decipher a Message:<br>
+        {% if request.form['cipher_option'] == 'decipher' %}
+            {% set encipherChecked = '' %}
+            {% set decipherChecked = 'checked' %}
+        {% else %}
+            {% set encipherChecked = 'checked' %}
+            {% set decipherChecked = '' %}
+        {% endif %}
+        <input type="radio" id="encipher" name="cipher_option" value="encipher" required  {{ encipherChecked }}>
+        <label for="encipher">Encipher</label>
+        <input type="radio" id="decipher" name="cipher_option" value="decipher" required {{ decipherChecked }}>
+        <label for="decipher">Decipher</label>
+        <br>
+        Key Word (lower case letters only please!):
+        <br>
+        <input type="text" name="key" pattern="[a-z]*" value="{{ request.form['key'] }}" required>
+        <br>
+        Text to cipher:<br>
+        <input type="text" name="message" value="{{ request.form['message'] }}" required>
+        <br><br>
+        <input type="submit" value="Cipher">
+    </form>
+</div>
 {% if encipher %}
 <h2>Your new message:<br />{{ encipher }}</h2>
 {% endif %}
